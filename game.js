@@ -3422,6 +3422,30 @@
     updateAudioLabels();
   }
 
+  function setupMusicToggle() {
+    const btn = document.getElementById("touch-music-toggle");
+    if (!btn) return;
+    const iconOn = btn.querySelector(".icon-music-on");
+    const iconOff = btn.querySelector(".icon-music-off");
+    function updateIcon() {
+      const muted = getMusicMuted();
+      if (iconOn) iconOn.hidden = muted;
+      if (iconOff) iconOff.hidden = !muted;
+      btn.setAttribute("aria-label", muted ? "Turn music on" : "Turn music off");
+      btn.setAttribute("title", muted ? "Music off – tap to turn on" : "Music on – tap to turn off");
+    }
+    btn.addEventListener("click", () => {
+      setMusicMuted(!getMusicMuted());
+      updateIcon();
+    });
+    btn.addEventListener("touchend", (e) => {
+      e.preventDefault();
+      setMusicMuted(!getMusicMuted());
+      updateIcon();
+    }, { passive: false });
+    updateIcon();
+  }
+
   function setupTouchControls(input) {
     const overlay = document.getElementById("touch-controls");
     if (!overlay || !input) return;
@@ -3468,6 +3492,7 @@
 
     const input = new InputHandler(window);
     setupTouchControls(input);
+    setupMusicToggle();
 
     const titleLogo = typeof Image !== "undefined" ? new Image() : null;
     if (titleLogo) titleLogo.src = "images/Logo.png";

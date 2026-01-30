@@ -64,29 +64,122 @@ body {
 .touch-controls .touch-btn {
   position: absolute;
   pointer-events: auto;
-  border: none;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(18, 22, 38, 0.82);
+  border-radius: 8px;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
   padding: 0;
-  min-width: 56px;
-  min-height: 56px;
-  opacity: 0.85;
-  transition: background 0.1s, transform 0.05s;
+  min-width: 36px;
+  min-height: 36px;
+  color: rgba(255, 255, 255, 0.95);
+  transition: background 0.12s, transform 0.08s, border-color 0.12s;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.25);
 }
+
+.touch-btn .touch-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 6px;
+  box-sizing: border-box;
+}
+
+.touch-btn .touch-icon svg {
+  width: 100%;
+  height: 100%;
+  max-width: 22px;
+  max-height: 22px;
+  object-fit: contain;
+}
+
+.touch-btn .touch-icon[hidden] { display: none !important; }
 
 .touch-btn:active {
-  background: rgba(255, 255, 255, 0.45);
-  transform: scale(0.95);
+  background: rgba(50, 65, 120, 0.55);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: scale(0.96);
 }
 
-.touch-pause { top: max(12px, env(safe-area-inset-top)); right: max(12px, env(safe-area-inset-right)); width: 44px; height: 44px; min-width: 44px; min-height: 44px; }
-.touch-left  { left: max(12px, env(safe-area-inset-left)); bottom: max(24px, env(safe-area-inset-bottom)); width: 18%; max-width: 80px; height: 42%; max-height: 130px; }
-.touch-right { left: max(12px, env(safe-area-inset-left)); bottom: max(24px, env(safe-area-inset-bottom)); margin-left: 20%; width: 18%; max-width: 80px; height: 42%; max-height: 130px; }
-.touch-jump  { right: max(12px, env(safe-area-inset-right)); bottom: max(24px, env(safe-area-inset-bottom)); width: 24%; max-width: 100px; height: 40%; max-height: 130px; }
-.touch-shoot { right: max(14px, env(safe-area-inset-right)); top: 22%; width: 16%; max-width: 64px; height: 18%; max-height: 64px; }
-.touch-shield { right: max(14px, env(safe-area-inset-right)); top: 42%; width: 16%; max-width: 64px; height: 18%; max-height: 64px; }
+/* Top-right: Pause + Music (small), aligned in a row */
+.touch-pause {
+  top: max(8px, env(safe-area-inset-top));
+  right: max(8px, env(safe-area-inset-right));
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+}
+.touch-pause .touch-icon { padding: 5px; }
+.touch-pause .touch-icon svg { max-width: 16px; max-height: 16px; }
+
+.touch-music {
+  top: max(8px, env(safe-area-inset-top));
+  right: calc(max(8px, env(safe-area-inset-right)) + 36px);
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  min-height: 28px;
+}
+.touch-music .touch-icon { padding: 4px; }
+.touch-music .touch-icon svg { max-width: 16px; max-height: 16px; }
+.touch-music .touch-icon.icon-music-off[hidden] { display: none !important; }
+
+/* Left side: Left + Right arrows, same row, aligned */
+.touch-left {
+  left: max(8px, env(safe-area-inset-left));
+  bottom: max(14px, env(safe-area-inset-bottom));
+  width: 46px;
+  height: 46px;
+  min-width: 46px;
+  min-height: 46px;
+}
+.touch-right {
+  left: max(60px, calc(env(safe-area-inset-left) + 52px));
+  bottom: max(14px, env(safe-area-inset-bottom));
+  width: 46px;
+  height: 46px;
+  min-width: 46px;
+  min-height: 46px;
+}
+.touch-left .touch-icon svg,
+.touch-right .touch-icon svg { max-width: 20px; max-height: 20px; }
+
+/* Right side: Jump (main), Shoot, Shield – vertical stack, aligned */
+.touch-jump {
+  right: max(8px, env(safe-area-inset-right));
+  bottom: max(14px, env(safe-area-inset-bottom));
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  min-height: 50px;
+}
+.touch-jump .touch-icon svg { max-width: 22px; max-height: 22px; }
+
+.touch-shoot {
+  right: max(8px, env(safe-area-inset-right));
+  bottom: max(70px, calc(env(safe-area-inset-bottom) + 56px));
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+}
+.touch-shoot .touch-icon svg { max-width: 18px; max-height: 18px; }
+
+.touch-shield {
+  right: max(8px, env(safe-area-inset-right));
+  bottom: max(116px, calc(env(safe-area-inset-bottom) + 102px));
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+}
+.touch-shield .touch-icon svg { max-width: 18px; max-height: 18px; }
 
 @media (pointer: coarse), (max-width: 768px) {
   .touch-controls {
