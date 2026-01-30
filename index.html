@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <title>BLACKHOLE INFIVERSE PRESENTS</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="game-container">
+        <canvas id="game" width="960" height="540" aria-label="Game canvas"></canvas>
+        <div class="touch-controls" id="touch-controls" aria-hidden="true">
+          <button type="button" class="touch-btn touch-pause" data-action="pause" title="Pause" aria-label="Pause game"></button>
+          <button type="button" class="touch-btn touch-left" data-action="left" title="Move left" aria-label="Move left"></button>
+          <button type="button" class="touch-btn touch-right" data-action="right" title="Move right" aria-label="Move right"></button>
+          <button type="button" class="touch-btn touch-jump" data-action="jump" title="Jump" aria-label="Jump"></button>
+          <button type="button" class="touch-btn touch-shoot" data-action="shoot" title="Shoot" aria-label="Shoot"></button>
+          <button type="button" class="touch-btn touch-shield" data-action="shield" title="Shield" aria-label="Shield"></button>
+        </div>
+        <div class="pause-menu" id="pause-menu" aria-hidden="true" role="dialog" aria-label="Pause menu">
+          <div class="pause-menu-backdrop"></div>
+          <div class="pause-menu-box">
+            <h2 class="pause-menu-title">PAUSED</h2>
+            <button type="button" class="pause-menu-btn" id="pause-resume">Resume Game</button>
+            <button type="button" class="pause-menu-btn" id="pause-replay">Replay Level</button>
+            <button type="button" class="pause-menu-btn" id="pause-settings">Settings</button>
+            <button type="button" class="pause-menu-btn" id="pause-exit">Exit to Main Menu</button>
+          </div>
+        </div>
+        <div class="settings-menu" id="settings-menu" aria-hidden="true" role="dialog" aria-label="Settings">
+          <div class="settings-backdrop"></div>
+          <div class="settings-box">
+            <div class="settings-header">
+              <h2 class="settings-title">SETTINGS</h2>
+              <button type="button" class="settings-close" id="settings-close" aria-label="Close">✕</button>
+            </div>
+            <div class="settings-scroll">
+              <section class="settings-section" aria-labelledby="controls-heading">
+                <h3 id="controls-heading" class="settings-section-title">CONTROLS</h3>
+                <div class="controls-block">
+                  <h4 class="controls-subtitle">PC</h4>
+                  <ul class="controls-list">
+                    <li><span class="control-key">← / A</span> Move Left</li>
+                    <li><span class="control-key">→ / D</span> Move Right</li>
+                    <li><span class="control-key">Space</span> Jump</li>
+                    <li><span class="control-key">F</span> Shoot</li>
+                    <li><span class="control-key">E</span> Shield</li>
+                    <li><span class="control-key">1</span> Music Mute</li>
+                    <li><span class="control-key">2</span> Music Unmute</li>
+                  </ul>
+                </div>
+                <div class="controls-block">
+                  <h4 class="controls-subtitle">Mobile</h4>
+                  <ul class="controls-list">
+                    <li>Left button → Move Left</li>
+                    <li>Right button → Move Right</li>
+                    <li>Jump button → Jump</li>
+                    <li>Shoot button → Shoot</li>
+                    <li>Shield button → Shield</li>
+                  </ul>
+                </div>
+                <p class="settings-tips">Tap once to jump. Hold to keep shooting. Buttons do not overlap.</p>
+              </section>
+              <section class="settings-section" aria-labelledby="audio-heading">
+                <h3 id="audio-heading" class="settings-section-title">AUDIO</h3>
+                <div class="settings-row">
+                  <span class="settings-label">Background music</span>
+                  <button type="button" class="settings-toggle" id="settings-music" aria-pressed="false">OFF</button>
+                </div>
+                <div class="settings-row">
+                  <span class="settings-label">Sound effects</span>
+                  <button type="button" class="settings-toggle" id="settings-sfx" aria-pressed="false">OFF</button>
+                </div>
+              </section>
+              <section class="settings-section settings-game-options" id="settings-game-options" aria-labelledby="game-options-heading">
+                <h3 id="game-options-heading" class="settings-section-title">GAME</h3>
+                <button type="button" class="settings-action-btn" id="settings-resume">Resume Game</button>
+                <button type="button" class="settings-action-btn" id="settings-replay">Replay Level</button>
+                <button type="button" class="settings-action-btn" id="settings-exit">Exit to Main Menu</button>
+              </section>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="settings-entry-btn" id="settings-entry-btn" aria-label="Open settings" title="Settings">⚙</button>
+      </div>
+      <div class="help">
+        <div><strong>Move</strong>: Arrow keys / A-D</div>
+        <div><strong>Jump</strong>: Space</div>
+        <div><strong>Shoot</strong>: F · <strong>Shield</strong>: E</div>
+        <div><strong>Music</strong>: 1 Mute / 2 Unmute</div>
+        <div><strong>Pause</strong>: Enter / P · <strong>Reset</strong>: R</div>
+      </div>
+    </div>
+    <script src="./game.js"></script>
+  </body>
+</html>
